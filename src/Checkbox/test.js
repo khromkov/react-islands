@@ -33,7 +33,7 @@ describe('Checkbox', () => {
             const input = checkbox.find('input');
             expect(input.length).to.equal(1);
             expect(input.hasClass('checkbox__control')).to.be.true;
-            expect(input.node.getAttribute('type')).to.equal('checkbox');
+            expect(input.instance().getAttribute('type')).to.equal('checkbox');
         });
 
         it('has text', () => {
@@ -41,7 +41,7 @@ describe('Checkbox', () => {
 
             const text = checkbox.find('span.checkbox__text');
             expect(text.length).to.equal(1);
-            expect(text.node.textContent).to.equal('checkbox');
+            expect(text.instance().textContent).to.equal('checkbox');
         });
 
         it('accepts type prop', () => {
@@ -53,13 +53,14 @@ describe('Checkbox', () => {
         it('accepts name prop', () => {
             const checkbox = mount(<Checkbox name="foo">checkbox</Checkbox>);
 
-            expect(checkbox.find('input').node.getAttribute('name')).to.equal('foo');
+            expect(checkbox.find('input').instance()
+            .getAttribute('name')).to.equal('foo');
         });
 
         it('accepts value prop', () => {
             const checkbox = mount(<Checkbox value="foo">checkbox</Checkbox>);
 
-            expect(checkbox.find('input').node.value).to.equal('foo');
+            expect(checkbox.find('input').instance().value).to.equal('foo');
         });
 
         it('accepts theme prop', () => {
@@ -91,22 +92,24 @@ describe('Checkbox', () => {
             const checkbox = mount(<Checkbox disabled>checkbox</Checkbox>);
 
             expect(checkbox.find('label').hasClass('checkbox_disabled')).to.be.true;
-            expect(checkbox.find('input').node.hasAttribute('disabled')).to.be.true;
+            expect(checkbox.find('input').instance()
+            .hasAttribute('disabled')).to.be.true;
 
             checkbox.setProps({ disabled: false });
             expect(checkbox.find('label').hasClass('checkbox_disabled')).to.be.false;
-            expect(checkbox.find('input').node.hasAttribute('disabled')).to.be.false;
+            expect(checkbox.find('input').instance()
+            .hasAttribute('disabled')).to.be.false;
         });
 
         it('accepts checked prop', () => {
             const checkbox = mount(<Checkbox checked>checkbox</Checkbox>);
 
             expect(checkbox.find('label').hasClass('checkbox_checked')).to.be.true;
-            expect(checkbox.find('input').node.checked).to.be.true;
+            expect(checkbox.find('input').instance().checked).to.be.true;
 
             checkbox.setProps({ checked: false });
             expect(checkbox.find('label').hasClass('checkbox_checked')).to.be.false;
-            expect(checkbox.find('input').node.checked).to.be.false;
+            expect(checkbox.find('input').instance().checked).to.be.false;
         });
 
         it('accepts focused prop', () => {
@@ -200,7 +203,7 @@ describe('Checkbox', () => {
 
             const text = button.find('span');
             expect(text.hasClass('button__text')).to.be.true;
-            expect(text.node.textContent).to.equal('checkbox');
+            expect(text.instance().textContent).to.equal('checkbox');
         });
 
         it('has label', () => {
@@ -255,13 +258,14 @@ describe('Checkbox', () => {
         it('accepts name prop', () => {
             const checkbox = mount(<Checkbox type="button" name="foo" checked>checkbox</Checkbox>);
 
-            expect(checkbox.find('input').node.getAttribute('name')).to.equal('foo');
+            expect(checkbox.find('input').instance()
+            .getAttribute('name')).to.equal('foo');
         });
 
         it('accepts value prop', () => {
             const checkbox = mount(<Checkbox type="button" value="foo" checked>checkbox</Checkbox>);
 
-            expect(checkbox.find('input').node.value).to.equal('foo');
+            expect(checkbox.find('input').instance().value).to.equal('foo');
         });
 
         it('accepts disabled prop', () => {
@@ -269,12 +273,14 @@ describe('Checkbox', () => {
 
             expect(checkbox.find('label').hasClass('checkbox_disabled')).to.be.true;
             expect(checkbox.find('button').hasClass('button_disabled')).to.be.true;
-            expect(checkbox.find('input').node.hasAttribute('disabled')).to.be.true;
+            expect(checkbox.find('input').instance()
+            .hasAttribute('disabled')).to.be.true;
 
             checkbox.setProps({ disabled: false });
             expect(checkbox.find('label').hasClass('checkbox_disabled')).to.be.false;
             expect(checkbox.find('button').hasClass('button_disabled')).to.be.false;
-            expect(checkbox.find('input').node.hasAttribute('disabled')).to.be.false;
+            expect(checkbox.find('input').instance()
+            .hasAttribute('disabled')).to.be.false;
         });
 
         it('accepts focused prop', () => {

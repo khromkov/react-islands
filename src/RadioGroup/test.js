@@ -134,11 +134,12 @@ describe('RadioGroup', () => {
                     <Radio value="10">10</Radio>
                 </RadioGroup>
             );
-            const radio = wrapper.find('.radio-group').find(Radio);
+            let radio = wrapper.find('.radio-group').find(Radio);
             expect(radio).to.have.prop('disabled', true);
 
             wrapper.setProps({ disabled: false });
 
+            radio = wrapper.find('.radio-group').find(Radio);
             expect(radio).to.not.have.prop('disabled', true);
         });
 
@@ -284,10 +285,11 @@ describe('RadioGroup', () => {
                     <Radio value="10">10</Radio>
                 </RadioGroup>
             );
-            const radio = wrapper.find('.radio-group').find(Radio);
+            let radio = wrapper.find('.radio-group').find(Radio);
             expect(radio).to.have.prop('disabled', true);
 
             wrapper.setProps({ disabled: false });
+            radio = wrapper.find('.radio-group').find(Radio);
             expect(radio).to.not.have.prop('disabled', true);
         });
 

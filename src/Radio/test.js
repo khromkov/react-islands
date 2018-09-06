@@ -33,7 +33,7 @@ describe('Radio', () => {
             const input = radio.find('input');
             expect(input.length).to.equal(1);
             expect(input.hasClass('radio__control')).to.be.true;
-            expect(input.node.getAttribute('type')).to.equal('radio');
+            expect(input.instance().getAttribute('type')).to.equal('radio');
         });
 
         it('has text', () => {
@@ -41,7 +41,7 @@ describe('Radio', () => {
 
             const text = radio.find('span.radio__text');
             expect(text.length).to.equal(1);
-            expect(text.node.textContent).to.equal('radio');
+            expect(text.instance().textContent).to.equal('radio');
         });
 
         it('accepts type prop', () => {
@@ -53,13 +53,14 @@ describe('Radio', () => {
         it('accepts name prop', () => {
             const radio = mount(<Radio name="foo">radio</Radio>);
 
-            expect(radio.find('input').node.getAttribute('name')).to.equal('foo');
+            expect(radio.find('input').instance()
+            .getAttribute('name')).to.equal('foo');
         });
 
         it('accepts value prop', () => {
             const radio = mount(<Radio value="foo">radio</Radio>);
 
-            expect(radio.find('input').node.value).to.equal('foo');
+            expect(radio.find('input').instance().value).to.equal('foo');
         });
 
         it('accepts theme prop', () => {
@@ -91,22 +92,24 @@ describe('Radio', () => {
             const radio = mount(<Radio disabled>radio</Radio>);
 
             expect(radio.find('label').hasClass('radio_disabled')).to.be.true;
-            expect(radio.find('input').node.hasAttribute('disabled')).to.be.true;
+            expect(radio.find('input').instance()
+                .hasAttribute('disabled')).to.be.true;
 
             radio.setProps({ disabled: false });
             expect(radio.find('label').hasClass('radio_disabled')).to.be.false;
-            expect(radio.find('input').node.hasAttribute('disabled')).to.be.false;
+            expect(radio.find('input').instance()
+                .hasAttribute('disabled')).to.be.false;
         });
 
         it('accepts checked prop', () => {
             const radio = mount(<Radio checked>radio</Radio>);
 
             expect(radio.find('label').hasClass('radio_checked')).to.be.true;
-            expect(radio.find('input').node.checked).to.be.true;
+            expect(radio.find('input').instance().checked).to.be.true;
 
             radio.setProps({ checked: false });
             expect(radio.find('label').hasClass('radio_checked')).to.be.false;
-            expect(radio.find('input').node.checked).to.be.false;
+            expect(radio.find('input').instance().checked).to.be.false;
         });
 
         it('accepts focused prop', () => {
@@ -194,7 +197,7 @@ describe('Radio', () => {
 
             const text = button.find('span');
             expect(text.hasClass('button__text')).to.be.true;
-            expect(text.node.textContent).to.equal('radio');
+            expect(text.instance().textContent).to.equal('radio');
         });
 
         it('has label', () => {
@@ -249,13 +252,14 @@ describe('Radio', () => {
         it('accepts value prop', () => {
             const radio = mount(<Radio type="button" checked value="foo">radio</Radio>);
 
-            expect(radio.find('input').node.value).to.equal('foo');
+            expect(radio.find('input').instance().value).to.equal('foo');
         });
 
         it('accepts name prop', () => {
             const radio = mount(<Radio type="button" checked name="foo">radio</Radio>);
 
-            expect(radio.find('input').node.getAttribute('name')).to.equal('foo');
+            expect(radio.find('input').instance()
+                .getAttribute('name')).to.equal('foo');
         });
 
         it('accepts disabled prop', () => {
@@ -263,12 +267,14 @@ describe('Radio', () => {
 
             expect(radio.find('label').hasClass('radio_disabled')).to.be.true;
             expect(radio.find('button').hasClass('button_disabled')).to.be.true;
-            expect(radio.find('input').node.hasAttribute('disabled')).to.be.true;
+            expect(radio.find('input').instance()
+                .hasAttribute('disabled')).to.be.true;
 
             radio.setProps({ disabled: false });
             expect(radio.find('label').hasClass('radio_disabled')).to.be.false;
             expect(radio.find('button').hasClass('button_disabled')).to.be.false;
-            expect(radio.find('input').node.hasAttribute('disabled')).to.be.false;
+            expect(radio.find('input').instance()
+                .hasAttribute('disabled')).to.be.false;
         });
 
         it('accepts focused prop', () => {

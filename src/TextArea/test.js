@@ -144,7 +144,7 @@ describe('TextArea', () => {
         const textarea = mount(<TextArea disabled onChange={spy}/>);
         const control = textarea.find('textarea');
 
-        control.node.setAttribute('value', 'hello');
+        control.instance().setAttribute('value', 'hello');
         control.simulate('change');
 
         expect(spy).to.not.have.been.called;

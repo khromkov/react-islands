@@ -134,11 +134,12 @@ describe('CheckboxGroup', () => {
                     <Checkbox value="10">10</Checkbox>
                 </CheckboxGroup>
             );
-            const checkbox = wrapper.find('.checkbox-group').find(Checkbox);
+            let checkbox = wrapper.find('.checkbox-group').find(Checkbox);
             expect(checkbox).to.have.prop('disabled', true);
 
             wrapper.setProps({ disabled: false });
 
+            checkbox = wrapper.find('.checkbox-group').find(Checkbox);
             expect(checkbox).to.not.have.prop('disabled', true);
         });
 
@@ -287,10 +288,11 @@ describe('CheckboxGroup', () => {
             );
             const group = wrapper.find('.checkbox-group');
 
-            const checkbox = group.find('.checkbox');
+            let checkbox = group.find('.checkbox');
             expect(checkbox.hasClass('checkbox_disabled')).to.be.true;
 
             wrapper.setProps({ disabled: false });
+            checkbox = wrapper.find('.checkbox-group').find('.checkbox');
             expect(checkbox.hasClass('checkbox_disabled')).to.be.false;
         });
 
