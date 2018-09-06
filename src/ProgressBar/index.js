@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Component from '../Component';
 
@@ -32,14 +33,14 @@ class ProgressBar extends Component {
 }
 
 ProgressBar.contextTypes = {
-    theme: React.PropTypes.string,
+    theme: PropTypes.string,
 };
 
 ProgressBar.propTypes = {
-    className: React.PropTypes.string,
-    theme: React.PropTypes.string,
-    size: React.PropTypes.string,
-    value: React.PropTypes.number,
+    className: PropTypes.string,
+    theme: PropTypes.string,
+    size: PropTypes.string,
+    value: PropTypes.number,
 };
 
 ProgressBar.defaultProps = {

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import Component from '../Component';
@@ -21,11 +22,11 @@ class App extends Component {
 }
 
 App.propTypes = {
-    theme: React.PropTypes.string,
+    theme: PropTypes.string,
 };
 
 App.childContextTypes = {
-    theme: React.PropTypes.string,
+    theme: PropTypes.string,
 };
 
 export default App;
