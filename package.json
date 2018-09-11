@@ -1,5 +1,5 @@
 {
-  "name": "react-islands",
+  "name": "jk-react-islands",
   "version": "0.17.0",
   "description": "A set of react components implementing Yandex's islands design",
   "main": "components/index.js",
@@ -32,7 +32,8 @@
   "contributors": [
     "Sergey Nikitin <nik.pasaran@gmail.com> (https://github.com/pasaran)",
     "Ilya Caulfield <ilya.caulfield@gmail.com> (https://github.com/VodkaBears)",
-    "Aleksei Androsov <doochik@ya.ru> (https://github.com/doochik)"
+    "Aleksei Androsov <doochik@ya.ru> (https://github.com/doochik)",
+    "Evgenii Khromkov <khromkov@gmail.com> (https://github.com/khromkov)"
   ],
   "license": "MIT",
   "peerDependencies": {
