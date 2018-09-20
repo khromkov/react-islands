@@ -1,6 +1,6 @@
 {
   "name": "jk-react-islands",
-  "version": "0.17.0",
+  "version": "0.18.0-beta2",
   "description": "A set of react components implementing Yandex's islands design",
   "main": "components/index.js",
   "files": [
@@ -37,8 +37,8 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "react": "^15.6.2 || >=16.0.0",
-    "react-dom": "^15.6.2 || >=16.0.0"
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0"
   },
   "dependencies": {
     "babel-runtime": "^6.6.1",

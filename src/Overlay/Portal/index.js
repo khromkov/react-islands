@@ -7,31 +7,23 @@ class Portal extends React.Component {
         this.portalNode = null;
     }
 
-    componentDidMount() {
-        this.renderPortal();
-    }
-
-    componentDidUpdate() {
-        this.renderPortal();
-    }
-
     componentWillUnmount() {
         this.unmountPortal();
     }
 
     render() {
-        return null;
-    }
-
-    renderPortal() {
         const child = React.Children.only(this.props.children);
         if (child) {
             this.mountPortal();
-            // NOTE: `ReactDOM.unstable_renderSubtreeIntoContainer` to store intermediate contexts
-            ReactDOM.unstable_renderSubtreeIntoContainer(this, child, this.portalNode);
+            return ReactDOM.createPortal(
+                child,
+                this.portalNode
+            );
         } else {
             this.unmountPortal();
         }
+
+        return null;
     }
 
     mountPortal() {
