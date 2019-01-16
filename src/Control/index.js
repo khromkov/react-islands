@@ -126,11 +126,13 @@ class Control extends Component {
         } else {
             focused = true;
         }
-        this.setState({ focused }, () => this.dispatchFocusChange(focused));
+        this.setState({ focused });
+        this.dispatchFocusChange(focused);
     }
 
     onBlur() {
-        this.setState({ focused: false }, () => this.dispatchFocusChange(false));
+        this.setState({ focused: false });
+        this.dispatchFocusChange(false);
     }
 }
 

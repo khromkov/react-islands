@@ -11,6 +11,7 @@ class Example extends React.Component {
         };
 
         this.onInputChange = this.onInputChange.bind(this);
+        this.onFocusChange = this.onFocusChange.bind(this);
     }
 
     render() {
@@ -33,7 +34,15 @@ class Example extends React.Component {
                 </div>
 
                 <div className="example">
-                    <TextInput theme="islands" size="m" value={this.state.value} onChange={this.onInputChange} maxLength={14}/>
+                    <TextInput
+                        theme="islands"
+                        size="m"
+                        value={this.state.value}
+                        onChange={this.onInputChange}
+                        onFocusChange={this.onFocusChange}
+                        focused={this.state.focused}
+                        maxLength={14}
+                    />
                 </div>
             </div>
         );
@@ -41,6 +50,10 @@ class Example extends React.Component {
 
     onInputChange(value) {
         this.setState({ value });
+    }
+
+    onFocusChange(value) {
+        this.setState({ focused: !!value });
     }
 }
 
