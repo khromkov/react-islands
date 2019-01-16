@@ -5,6 +5,19 @@ import Component from '../Component';
 var didWarnFocusChangedFocused = false;
 
 class Control extends Component {
+    static getDerivedStateFromProps({ disabled, focused }, state) {
+        if (disabled === true) {
+            return {
+                hovered: false,
+                focused: false,
+            };
+        } else if (typeof focused !== 'undefined') {
+            return { focused: focused ? state.focused || 'hard' : false };
+        }
+
+        return null;
+    }
+
     constructor(props) {
         super(props);
 
@@ -39,17 +52,6 @@ class Control extends Component {
         }
         if (this.state.focused) {
             this.componentWillGainFocus();
-        }
-    }
-
-    componentWillReceiveProps({ disabled, focused }) {
-        if (disabled === true) {
-            this.setState({
-                hovered: false,
-                focused: false,
-            });
-        } else if (typeof focused !== 'undefined') {
-            this.setState({ focused: focused ? this.state.focused || 'hard' : false });
         }
     }
 

@@ -118,7 +118,7 @@ describe('Radio', () => {
             expect(radio.state('focused')).to.be.ok;
             expect(radio.find('label').hasClass('radio_focused')).to.be.true;
 
-            radio.setState({ focused: false });
+            radio.setProps({ focused: false });
             expect(radio.find('label').hasClass('radio_focused')).to.be.false;
         });
 

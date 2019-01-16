@@ -118,7 +118,7 @@ describe('Checkbox', () => {
             expect(checkbox.state('focused')).to.be.ok;
             expect(checkbox.find('label').hasClass('checkbox_focused')).to.be.true;
 
-            checkbox.setState({ focused: false });
+            checkbox.setProps({ focused: false });
             expect(checkbox.find('label').hasClass('checkbox_focused')).to.be.false;
         });
 
