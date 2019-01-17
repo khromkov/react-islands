@@ -6,38 +6,20 @@ import Control from '../Control';
 import pressable from '../pressable';
 
 class Button extends Control {
-    constructor(...args) {
-        super(...args);
-        this._wrappedChildren = null;
-    }
-
-    /** @override */
-    componentWillUpdate(nextProps, nextState) {
-        if (super.componentWillUpdate) {
-            super.componentWillUpdate(nextProps, nextState);
-        }
-
-        if (this.props.children !== nextProps.children) {
-            this._wrappedChildren = null;
-        }
-    }
-
     render() {
         const props = this.props;
 
-        if (!this._wrappedChildren) {
-            this._wrappedChildren = Component.wrap(props.children, child => (
-                // NOTE: this `key` is to harmonize the one we have in `Component.wrap()`
-                <span key="wrappedText" className="button__text">{child}</span>
-            ));
-        }
+        const wrappedChildren = Component.wrap(props.children, child => (
+            // NOTE: this `key` is to harmonize the one we have in `Component.wrap()`
+            <span key="wrappedText" className="button__text">{child}</span>
+        ));
 
         if (props.type === 'link') {
             const url = props.disabled ? null : props.url;
 
             return (
                 <a id={props.id} className={this.className()} {...this.getControlHandlers()} ref="control" role="link" href={url}>
-                    {this._wrappedChildren}
+                    {wrappedChildren}
                 </a>
             );
         } else {
@@ -52,7 +34,7 @@ class Button extends Control {
                     title={props.title}
                     disabled={props.disabled}
                 >
-                    {this._wrappedChildren}
+                    {wrappedChildren}
                 </button>
             );
         }
