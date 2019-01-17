@@ -16,6 +16,18 @@ function appendItemToCache(item, cache) {
 }
 
 class Menu extends Component {
+    static getDerivedStateFromProps({ focused, disabled }) {
+        let update = null;
+
+        if (disabled === true) {
+            update = { focused: false };
+        } else if (typeof focused !== 'undefined') {
+            update = { focused };
+        }
+
+        return update;
+    }
+
     constructor(props) {
         super(props);
 
@@ -66,12 +78,7 @@ class Menu extends Component {
         });
     }
 
-    componentWillReceiveProps({ disabled, focused, value }) {
-        if (disabled === true) {
-            this.setState({ focused: false });
-        } else if (typeof focused !== 'undefined') {
-            this.setState({ focused });
-        }
+    componentWillReceiveProps({ value }) {
         if (this.props.value !== value) {
             this.setState({ value: this._validateValue(value) });
         }
@@ -467,14 +474,16 @@ class Menu extends Component {
             this.setState({ hoveredIndex: this._getFirstSelectedChildIndex() });
         }
         this._shouldScrollToItem = true;
-        this.setState({ focused: true }, () => this.dispatchFocusChange(true));
+        this.setState({ focused: true });
+        this.dispatchFocusChange(true);
     }
 
     onBlur() {
         this.setState({
             focused: false,
             hoveredIndex: null,
-        }, () => this.dispatchFocusChange(false));
+        });
+        this.dispatchFocusChange(false);
     }
 
     onKeyDown(e) {
